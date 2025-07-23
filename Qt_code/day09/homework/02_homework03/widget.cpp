@@ -69,9 +69,12 @@ void Widget::paintEvent(QPaintEvent *event){
         pat.drawText(-8, -150, QString::number(i));
     }
 
+    //set_currentTime();
+    setLine(pat);
     second_move(pat);
-    minute_move(pat);
-    hour_move(pat);
+    //minute_move(pat);
+    //hour_move(pat);
+
 }
 
 void Widget::set_currentTime(){
@@ -84,10 +87,41 @@ void Widget::set_currentTime(){
     hour = list2[2].toUInt();
 }
 
+//void Widget::setLine(QPainter & pat){
+
+//    // 设置画笔
+//    QPen pen;
+//    pen.setColor(QColor(Qt::red));
+//    pen.setWidth(3);
+//    pat.setPen(pen);
+//    // 画秒针
+//    pat.rotate(second+=6);
+//    pat.drawLine(0, 0, 0, -160);
+
+//    // 设置画笔
+//    QPen pen1;
+//    pen.setColor(QColor(Qt::green));
+//    pen.setWidth(6);
+//    pat.setPen(pen1);
+//    // 画分针
+//    pat.rotate(minute++);
+//    pat.drawLine(0, 0, 0, -130);
+
+//    // 设置画笔
+//    QPen pen2;
+//    pen.setColor(QColor(Qt::blue));
+//    pen.setWidth(9);
+//    pat.setPen(pen2);
+//    // 画时针
+//    pat.rotate(hour++);
+//    pat.drawLine(0, 0, 0, -100);
+//}
+
 void Widget::second_move(QPainter & pat){
     if(second > 360){
         second = 0;
         minute += 6;
+        minute_move(pat);
     }
     // 设置画笔
     QPen pen;
@@ -115,7 +149,6 @@ void Widget::minute_move(QPainter & pat){
     // 画指针
     pat.rotate(minute++);
     pat.drawLine(0, 0, 0, -130);
-
 }
 
 

@@ -17,6 +17,7 @@ public:
     void minute_move(QPainter & pat);
     void hour_move(QPainter & pat);
 
+    void setLine(QPainter & pat);
     void set_currentTime();
 
 private:
